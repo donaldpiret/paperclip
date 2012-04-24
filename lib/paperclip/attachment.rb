@@ -146,7 +146,7 @@ module Paperclip
     # on disk. If the file is stored in S3, the path is the "key" part of the
     # URL, and the :bucket option refers to the S3 bucket.
     def path(style_name = default_style)
-      path = original_filename.nil? ? nil : interpolate(path_option, style_name)
+      path = original_filename.nil? ? nil : interpolate(path_option, style_name).force_encoding("UTF-8")
       path.respond_to?(:unescape) ? path.unescape : path
     end
 
